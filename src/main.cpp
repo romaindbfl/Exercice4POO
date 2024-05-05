@@ -9,6 +9,7 @@
 #include "header/Archetype.hpp"
 #include "header/TypeArme.hpp"
 #include "header/TypeArmure.hpp"
+#include "header/TypeMonstre.hpp"
 
 int main() {
 
@@ -54,7 +55,8 @@ int main() {
     // Création d'un voleur
     //Voleur voleur("Robin", "Des Bois");
 
-    Monstre monstre1("Gobelin", 100.0, 100.0, 1.0, 0.0);
+// Création d'un monstre
+Gobelin gobelin1("Gobelin");
 
     // Affichage des statistiques de chaque personnage
     //mage.afficher();
@@ -66,8 +68,12 @@ int main() {
     Hache hache1("Axe", "Commun");
     guerrier.attribuerArme(hache1);
     guerrier.attribuerArmure(maille1);
-    guerrier.attaquerMonstre(guerrier, monstre1);
-    guerrier.attaquerMonstre(guerrier, monstre1);
+    guerrier.attaquerMonstre(guerrier, gobelin1);
+    guerrier.afficher();
+    gobelin1.attaquerPersonnage(guerrier);
+    guerrier.afficher();
+    guerrier.attaquerMonstre(guerrier, gobelin1);
+    guerrier.afficher();
 
     return 0;
 

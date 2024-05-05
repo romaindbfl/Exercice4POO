@@ -74,21 +74,30 @@
         }
     }
 
-    void Personnage::perdreVie(float degats) {
-        vie -= degats;
+   float Personnage::perdreVie(float degats) {
+    // Si le personnage possède une armure
+    if (!armures.empty()) {
+        Armure armureUtilisee = armures.front(); // Sélectionner la première armure, à adapter si le personnage peut avoir plusieurs armures
+        float resistance = armureUtilisee.getResistance();
+        float degatsReels = degats - resistance; // Calculer les dégâts réels subis en prenant en compte la résistance de l'armure
+        if (degatsReels < 0) degatsReels = 0; // S'assurer que les dégâts réels ne deviennent pas négatifs
+        vie -= degatsReels; // Réduire la vie du personnage par les dégâts réels
+        return degatsReels; // Retourner les dégâts réels subis
+    } else {
+        vie -= degats; // Si le personnage n'a pas d'armure, les dégâts sont appliqués directement à sa vie
+        return degats; // Retourner les dégâts subis sans prendre en compte la résistance de l'armure
     }
+}
+
 
    void Personnage::attaquerMonstre(Personnage& personnage, Monstre& monstre) {
     cout << "   🗲 🗲 🗲  Attaque du monstre !🗲 🗲 🗲  " << endl;
 
     // Sélectionner une arme du personnage (ici, on suppose qu'il possède au moins une arme)
-    if (!armes.empty() && !armures.empty()) {
+    if (!armes.empty()) {
         Arme armeUtilisee = armes.front(); // Sélectionner la première arme, à adapter si le personnage peut avoir plusieurs armes
-        Armure armureUtilisee = armures.front(); // Sélectionner la première armure, à adapter si le personnage peut avoir plusieurs armures
         // Utiliser les dégâts de l'arme pour infliger des dégâts au monstre
         float degatsInfliges = armeUtilisee.getDegats();
-         float resistanceArmure = armureUtilisee.getResistance(); // Obtenir la résistance de l'armure
-
         // Infliger les dégâts au monstre
         if (degatsInfliges >= monstre.vie) {
             cout << "Le monstre a été tué !" << endl;
@@ -98,10 +107,7 @@
             xp += xpDuMonstre;
             float argentDuMonstre = monstre.genererQuantiteArgent();
             argent += argentDuMonstre;
-            float viePerdue = monstre.viePerdue();
-            vie = monstre.viePerdue() - resistanceArmure;
             cout << "Vous avez gagné " << xpDuMonstre << " points d'expérience et " << argentDuMonstre << " pièces d'or!" << endl;
-            cout << "Vie perdue : " << viePerdue << endl;
              // Vérifier si l'expérience dépasse 100
             if (xp >= 100) {
                 niveau++; // Augmenter le niveau de 1

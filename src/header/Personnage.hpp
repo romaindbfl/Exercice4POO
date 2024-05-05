@@ -44,7 +44,7 @@ public:
     void attribuerArmure(const Armure &armure);
     void afficherEquipement() const;
 
-    void perdreVie(float degats);
+    float perdreVie(float degats);
    void attaquerMonstre(Personnage& personnage, Monstre& monstre);
 
 };

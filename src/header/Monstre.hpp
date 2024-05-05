@@ -25,8 +25,9 @@ public:
     float genererQuantiteArgent() const;
     float genererQuantiteXP() const;
 
+    void attaquerPersonnage(Personnage& personnage);
+    
     float viePerdue() const;
-    void attaquerPersonnage(Personnage& personnage, const SortDegats& sortDegats);
     
 };
 
