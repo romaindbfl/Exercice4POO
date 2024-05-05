@@ -1,7 +1,7 @@
 #include "header/Arme.hpp"
 
     // constructeur avec des paramètres pour préciser les attributs
-    Arme::Arme(string nom, string rarete, string durabilite, float degats) : Objet(nom, rarete, durabilite)
+    Arme::Arme(string nom, string rarete, float durabilite, float degats) : Objet(nom, rarete, durabilite)
     {
         this->degats = degats;
     }

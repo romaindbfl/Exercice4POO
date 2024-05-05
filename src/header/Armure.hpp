@@ -11,9 +11,11 @@ private:
 public:
     
     // constructeur avec des paramètres pour préciser les attributs
-    Armure(string nom, string rarete, string durabilite, float resistance);
+    Armure(string nom, string rarete, float durabilite, float resistance);
     
     void afficher() const;
+    
+    float getResistance() const;
 };
 
 #endif

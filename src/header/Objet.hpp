@@ -16,7 +16,7 @@ public:
     string durabilite;
     Objet() = default;
     // constructeur avec des paramètres pour préciser les attributs
-    Objet(string nom, string rarete, string durabilite);
+    Objet(string nom, string rarete, float durabilite);
 };
 
 #endif

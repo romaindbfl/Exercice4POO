@@ -82,11 +82,12 @@
     cout << "   🗲 🗲 🗲  Attaque du monstre !🗲 🗲 🗲  " << endl;
 
     // Sélectionner une arme du personnage (ici, on suppose qu'il possède au moins une arme)
-    if (!armes.empty()) {
+    if (!armes.empty() && !armures.empty()) {
         Arme armeUtilisee = armes.front(); // Sélectionner la première arme, à adapter si le personnage peut avoir plusieurs armes
-    
+        Armure armureUtilisee = armures.front(); // Sélectionner la première armure, à adapter si le personnage peut avoir plusieurs armures
         // Utiliser les dégâts de l'arme pour infliger des dégâts au monstre
         float degatsInfliges = armeUtilisee.getDegats();
+         float resistanceArmure = armureUtilisee.getResistance(); // Obtenir la résistance de l'armure
 
         // Infliger les dégâts au monstre
         if (degatsInfliges >= monstre.vie) {
@@ -98,7 +99,7 @@
             float argentDuMonstre = monstre.genererQuantiteArgent();
             argent += argentDuMonstre;
             float viePerdue = monstre.viePerdue();
-            vie -= viePerdue;
+            vie = monstre.viePerdue() - resistanceArmure;
             cout << "Vous avez gagné " << xpDuMonstre << " points d'expérience et " << argentDuMonstre << " pièces d'or!" << endl;
             cout << "Vie perdue : " << viePerdue << endl;
              // Vérifier si l'expérience dépasse 100

@@ -11,7 +11,7 @@ private:
 public:
     
     // constructeur avec des paramètres pour préciser les attributs
-    Arme(string nom, string rarete, string durabilite, float degats);
+    Arme(string nom, string rarete, float durabilite, float degats);
 
     void afficher() const;
 

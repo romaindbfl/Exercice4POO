@@ -1,7 +1,7 @@
 #include "header/Armure.hpp"
 
 
-    Armure::Armure(string nom, string rarete, string durabilite, float resistance) : Objet(nom, rarete, durabilite)
+    Armure::Armure(string nom, string rarete, float durabilite, float resistance) : Objet(nom, rarete, durabilite)
     {
         this->resistance = resistance;
     }
@@ -13,3 +13,8 @@
         cout << "Durabilite: " << durabilite << endl;
         cout << "Resistance: " << resistance << endl;
     }
+
+
+float Armure::getResistance() const {
+    return resistance;
+}

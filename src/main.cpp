@@ -7,7 +7,8 @@
 #include "header/Potion.hpp"
 #include "header/Sort.hpp"
 #include "header/Archetype.hpp"
-
+#include "header/TypeArme.hpp"
+#include "header/TypeArmure.hpp"
 
 int main() {
 
@@ -45,28 +46,28 @@ int main() {
     monstre1.attaquerPersonnage(personnage1, sortDegats);
     personnage1.afficher();*/
       // Création d'un mage
-    Mage mage("Merlin", "L'Enchanteur");
+    //Mage mage("Merlin", "L'Enchanteur");
 
     // Création d'un guerrier
     Guerrier guerrier("Conan", "Le Barbare");
 
     // Création d'un voleur
-    Voleur voleur("Robin", "Des Bois");
+    //Voleur voleur("Robin", "Des Bois");
 
     Monstre monstre1("Gobelin", 100.0, 100.0, 1.0, 0.0);
 
     // Affichage des statistiques de chaque personnage
-    mage.afficher();
+    //mage.afficher();
     guerrier.afficher();
-    voleur.afficher();
+    //voleur.afficher();
     SortDegats sortDegats("Boule de feu", 10, 30.0);
-    Arme arme1("Baton", "Commun", "10", 20.0);
-    guerrier.attribuerArme(arme1);
+    Baton baton1("Baton", "Commun");
+    Maille maille1("Maille", "Commun");
+    Hache hache1("Axe", "Commun");
+    guerrier.attribuerArme(hache1);
+    guerrier.attribuerArmure(maille1);
     guerrier.attaquerMonstre(guerrier, monstre1);
-
-
-
-
+    guerrier.attaquerMonstre(guerrier, monstre1);
 
     return 0;
 
