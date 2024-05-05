@@ -78,40 +78,48 @@
         vie -= degats;
     }
 
-   void Personnage::attaquerMonstre(Personnage& personnage, Monstre& monstre, const SortDegats& sortDegats) {
+   void Personnage::attaquerMonstre(Personnage& personnage, Monstre& monstre) {
     cout << "   🗲 🗲 🗲  Attaque du monstre !🗲 🗲 🗲  " << endl;
-    cout << "Utilisation du sort de dégâts : " << sortDegats.nom << endl;
-    personnage.mana -= sortDegats.mana;
-    cout << "Vous avez perdu " << sortDegats.mana << "points de mana !" << endl;
 
-    float degatsInfliges = sortDegats.getDegats();
+    // Sélectionner une arme du personnage (ici, on suppose qu'il possède au moins une arme)
+    if (!armes.empty()) {
+        Arme armeUtilisee = armes.front(); // Sélectionner la première arme, à adapter si le personnage peut avoir plusieurs armes
     
-    // Vérifier si les dégâts infligés sont suffisants pour tuer le monstre
-    if (degatsInfliges >= monstre.vie) {
-        cout << "Le monstre a été tué !" << endl;
-        monstre.vie = 0;
-        // Récupérer les points d'expérience du monstre
-        float xpDuMonstre = monstre.genererQuantiteXP();
-        xp += xpDuMonstre;
-        float argentDuMonstre = monstre.genererQuantiteArgent();
-        argent += argentDuMonstre;
-        float viePerdue = monstre.viePerdue();
-        vie -= viePerdue;
-        cout << "Vous avez gagné " << xpDuMonstre << " points d'expérience et " << argentDuMonstre << " pièces d'or!" << endl;
-        cout << "Vie perdue : " << viePerdue << endl;
-         // Vérifier si l'expérience dépasse 100
-        if (xp >= 100) {
-        niveau++; // Augmenter le niveau de 1
-        xp = 0; // Réinitialiser l'expérience à 0
-        cout << "Niveau augmenté ! Nouveau niveau : " << niveau << endl;
-    }
+        // Utiliser les dégâts de l'arme pour infliger des dégâts au monstre
+        float degatsInfliges = armeUtilisee.getDegats();
+
+        // Infliger les dégâts au monstre
+        if (degatsInfliges >= monstre.vie) {
+            cout << "Le monstre a été tué !" << endl;
+            monstre.vie = 0;
+            // Récupérer les points d'expérience du monstre
+            float xpDuMonstre = monstre.genererQuantiteXP();
+            xp += xpDuMonstre;
+            float argentDuMonstre = monstre.genererQuantiteArgent();
+            argent += argentDuMonstre;
+            float viePerdue = monstre.viePerdue();
+            vie -= viePerdue;
+            cout << "Vous avez gagné " << xpDuMonstre << " points d'expérience et " << argentDuMonstre << " pièces d'or!" << endl;
+            cout << "Vie perdue : " << viePerdue << endl;
+             // Vérifier si l'expérience dépasse 100
+            if (xp >= 100) {
+                niveau++; // Augmenter le niveau de 1
+                xp = 0; // Réinitialiser l'expérience à 0
+                cout << "Niveau augmenté ! Nouveau niveau : " << niveau << endl;
+            }
+        } else {
+            monstre.vie -= degatsInfliges;
+            cout << "Le monstre a subi " << degatsInfliges << " points de dégâts !" << endl;
+            cout << "Il reste " << monstre.vie << " points de vie au monstre!" << endl;
+        }
     } else {
-        monstre.vie -= degatsInfliges;
-        cout << "Le monstre a subi " << degatsInfliges << " points de dégâts !" << endl;
-        cout << "Il reste " << monstre.vie << " points de vie au monstre!" << endl;
+        cout << "Vous n'avez pas d'arme équipée !" << endl;
     }
+
     cout << "🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲 🗲" << endl;
-    }
+}
+
+
 
     
 

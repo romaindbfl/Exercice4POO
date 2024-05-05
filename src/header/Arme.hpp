@@ -14,6 +14,8 @@ public:
     Arme(string nom, string rarete, string durabilite, float degats);
 
     void afficher() const;
+
+    float getDegats() const;
     
 };
 

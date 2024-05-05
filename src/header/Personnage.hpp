@@ -45,7 +45,7 @@ public:
     void afficherEquipement() const;
 
     void perdreVie(float degats);
-   void attaquerMonstre(Personnage& personnage, Monstre& monstre, const SortDegats& sortDegats);
+   void attaquerMonstre(Personnage& personnage, Monstre& monstre);
 
 };
 

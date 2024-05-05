@@ -16,3 +16,6 @@
         cout << "-----------------------------------------" << endl;
     }
 
+float Arme::getDegats() const {
+    return degats;
+}

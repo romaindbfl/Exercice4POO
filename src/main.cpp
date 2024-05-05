@@ -60,7 +60,9 @@ int main() {
     guerrier.afficher();
     voleur.afficher();
     SortDegats sortDegats("Boule de feu", 10, 30.0);
-    guerrier.attaquerMonstre(guerrier, monstre1, sortDegats);
+    Arme arme1("Baton", "Commun", "10", 20.0);
+    guerrier.attribuerArme(arme1);
+    guerrier.attaquerMonstre(guerrier, monstre1);
 
 
 
