@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Monstre;
 
@@ -45,8 +46,7 @@ public:
     void afficherEquipement() const;
 
     float perdreVie(float degats);
-   void attaquerMonstre(Personnage& personnage, Monstre& monstre);
-
+    void attaquerMonstre(Personnage& personnage, Monstre& monstre);
 };
 
 #endif

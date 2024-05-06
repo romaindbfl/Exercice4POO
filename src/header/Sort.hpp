@@ -48,4 +48,15 @@ class SortVie : public Sort {
     float getVie() const;
 };
 
+class SortResistance : public Sort {
+
+    private:
+    float resistance;
+    public:
+    SortResistance(string nom, float mana, float resistance);
+    void afficher() const;
+    void useMana();
+    float getResistance() const;
+
+};
 #endif

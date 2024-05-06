@@ -41,3 +41,23 @@ void SortVie::useMana() {
 float SortVie::getVie() const {
     return vie;
 }
+
+// Implémentation du constructeur de la classe SortVie
+SortResistance::SortResistance(string nom, float mana, float resistance) : Sort(nom, mana), resistance(resistance) {}
+
+void SortResistance::afficher() const {
+    cout << "----------------- " << nom << " -----------------" << endl;
+    cout << "Nom: " << nom << endl;
+    cout << "Mana: " << mana << endl;
+    cout << "Resistance: " << resistance << endl;
+    cout << "-----------------------------------------" << endl;
+}
+
+void SortResistance::useMana() {
+    // Utilisation de 50 points de mana
+    mana -= 25;
+}
+
+float SortResistance::getResistance() const {
+    return resistance;
+}
